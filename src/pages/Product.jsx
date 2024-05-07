@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import React, { useState, useParams } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 function Product() {
@@ -9,7 +9,12 @@ function Product() {
     Error,
   } = useFetch("https://dummyjson.com/products/" + id);
 
-  console.log(product);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = () => {
+    setCart([...cart, product]);
+  };
+
   return (
     <>
       {product && (
@@ -29,7 +34,7 @@ function Product() {
           </div>
 
           <p className="text-4xl mt-5 text-center font-bold">
-          <b></b>
+            <b></b>
             {product.brand}
           </p>
           <p className="text-4xl mt-5 ">
@@ -42,9 +47,14 @@ function Product() {
             {product.rating}
           </p>
 
-          <p className="text-4xl  mt-5 mb-8  ">
+          <p className="text-4xl  mt-5 mb-5  ">
             Categoria: <b></b>
             {product.category}
+            <div className=" text-right">
+              <button onClick={addToCart} className="btn btn-primary">
+                Add To Cart
+              </button>
+            </div>
           </p>
         </div>
       )}

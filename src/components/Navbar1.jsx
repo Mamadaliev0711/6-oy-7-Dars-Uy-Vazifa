@@ -64,6 +64,15 @@ function Navbar1() {
         <div className="navbar-center  hidden  lg:flex">
           <NavLinks />
         </div>
+        <div className="bg-green-200 py-4 mb-10">
+          <div className="navbar align-content">
+            <div className="navbar-end flex gap-10 items-center mt-10 mx-2">
+              <Link to="/Card" className="">
+                Card
+              </Link>
+            </div>
+          </div>
+        </div>
         <div className="navbar-end flex gap-10 items-center">
           {user && <p>{user.displayName}</p>}
           <div className="avatar">
